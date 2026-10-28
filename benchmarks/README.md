@@ -1,27 +1,34 @@
 # Stickly OCR and multilingual-search benchmark
 
-## Status
+## Current measured run
 
-The checked-in `results/summary.json` is a **pre-optimization baseline**. It was measured before the current search implementation added per-sticker/query caching and the `mast`/`party`/question-word concept expansions. Do not treat its search latency or retrieval scores as measurements of the current implementation. The benchmark runner has since been extended with search scaling and confidence-source reporting; rerun it to produce current outputs.
+`results/summary.json` contains the current search-optimized run; `results/baseline-summary.json` preserves the earlier pre-optimization measurements. The fixture corpus contains 12 locally generated synthetic text stickers and 36 English, Hinglish, and Hindi queries. It is designed for repeatable regression checks, not as a representative sample of users' WhatsApp libraries.
 
-## Baseline snapshot
+The current run measured 720 warmed searches over the 12-record collection at **0.561 ms p50** and **0.955 ms p95**. The expected sticker ranked first for **25/36** queries and appeared in the top three for **33/36**; mean reciprocal rank was **0.8056**. Relative to the saved baseline (32.532 ms p50, 34.737 ms p95, 23/36 top-1, 30/36 top-3), search latency was about **58× faster at p50** and **36× faster at p95**. The measured retrieval gains came from the `mast`/happy and `party`/celebration expansions. Question-word aliases have separate unit coverage; the short Devanagari question sticker still has no OCR text and remains a benchmark miss.
 
-This controlled set contains 12 locally generated synthetic text-sticker images and 36 English, Hinglish, and Hindi queries. It is useful for repeatable OCR and retrieval regression checks, but it is not a sample of real users' WhatsApp sticker libraries.
+### Warm search latency by collection size
 
-The recorded run used Node.js 22.23.4 on Linux x64, Tesseract.js 7.0.0, English + Hindi (`eng+hin`), and one OCR worker. The OCR language data was not cached at startup; worker/model initialization took 543 ms. Warm image recognition had 80 ms median and 183 ms p95 latency. Mean normalized character error rate was 0.216, with 5/12 exact normalized transcriptions; one Devanagari fixture produced no OCR text.
+| Records | Queries | p50 | p95 | Maximum |
+| ---: | ---: | ---: | ---: | ---: |
+| 12 | 180 | 0.563 ms | 1.012 ms | 1.806 ms |
+| 100 | 180 | 4.905 ms | 6.275 ms | 12.120 ms |
+| 500 | 180 | 24.710 ms | 31.725 ms | 49.367 ms |
+| 1,000 | 180 | 48.300 ms | 61.711 ms | 97.099 ms |
 
-With search fields limited to OCR output, the baseline recorded 720 warmed searches over a 12-sticker collection: 32.532 ms p50 and 34.737 ms p95. The expected sticker ranked first for 23/36 queries and appeared in the top three for 30/36; mean reciprocal rank was 0.7361. Query failures informed the later synonym coverage improvements.
+At sizes above 12, the runner repeats the same 12 OCR-derived fixture records with distinct IDs. Those larger-size timings measure ranking computation only; they do **not** demonstrate retrieval accuracy for 100, 500, or 1,000 unique stickers.
+
+## OCR results and limits
+
+This run used Node.js 22.23.4 on Linux x64, Tesseract.js 7.0.0, English + Hindi (`eng+hin`), and one worker. Language data was already cached when the run began; worker/model initialization took 380 ms. Warm recognition had 84 ms median and 196 ms p95 latency. Mean normalized character error rate was **0.216**, with **5/12** exact normalized transcriptions; one short Devanagari fixture returned no OCR text. The reported mean confidence (75.5) is page-level confidence, not word-level confidence.
+
+This measures the Tesseract.js path in Node, not Android's bundled on-device ML Kit OCR. Browser OCR also fetches worker/language resources on first use; sticker images are processed locally and are not uploaded by the benchmark or app. Results on real WhatsApp sticker images can differ substantially; use user-provided, permissioned images for representative evaluation.
 
 ## Re-run
 
-From the project root, run:
+From the project root:
 
 ```sh
 BENCH_VERBOSE=1 pnpm exec tsx benchmarks/run-benchmark.mts
 ```
 
-The runner writes JSON and CSV results under `benchmarks/results/`. Its ignored `.tessdata-cache` stores downloaded benchmark language data; do not commit that cache. The updated runner also reports warm search latency at 12, 100, 500, and 1,000 records. At sizes above 12, it repeats the same fixture records with distinct IDs, so those timings measure ranking cost only—not retrieval accuracy at those library sizes.
-
-## Interpretation limits
-
-This benchmark evaluates the Tesseract.js path in Node, not Android's bundled on-device ML Kit OCR. Browser OCR also requires a first-use download of its worker/language resources; sticker images themselves are processed locally and are not uploaded by the benchmark or app. Performance on actual WhatsApp sticker images may differ substantially; use user-provided, permissioned images for a representative evaluation.
+The runner writes JSON and CSV results under `benchmarks/results/`. Its ignored `.tessdata-cache` stores downloaded benchmark language data; do not commit that cache. The runner uses the app's search ranking over OCR output, without filename/tag leakage in its retrieval measurements.

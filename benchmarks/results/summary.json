@@ -1,9 +1,9 @@
 {
   "dataset": "Stickly Hindi + Hinglish controlled OCR fixture set",
   "synthetic": true,
-  "runLabel": "pre-optimization baseline",
-  "note": "Measured before query/index caching and the latest Hindi/Hinglish synonym expansions. Use as a historical baseline only; rerun the current benchmark script for current performance.",
-  "measuredAt": "2026-10-28T19:42:38.599Z",
+  "runLabel": "current search-optimized run",
+  "note": "Fresh measured run after query/per-sticker caching and added Hindi/Hinglish aliases. The 12-image corpus is synthetic; this is not an Android ML Kit benchmark.",
+  "measuredAt": "2026-10-28T20:13:42.679Z",
   "runtime": {
     "node": "v22.23.4",
     "platform": "linux",
@@ -18,42 +18,76 @@
     "searchCollectionSize": 12
   },
   "ocr": {
-    "workerAndLanguageInitMs": 543,
-    "languageModelsCachedAtStart": false,
-    "totalWarmRecognitionMs": 1144,
+    "workerAndLanguageInitMs": 380,
+    "languageModelsCachedAtStart": true,
+    "totalWarmRecognitionMs": 1225,
     "perImageMs": {
-      "median": 80,
-      "p95": 183,
-      "min": 34,
-      "max": 183
+      "median": 84,
+      "p95": 196,
+      "min": 35,
+      "max": 196
     },
     "normalizedCharacterErrorRateMean": 0.216,
     "exactNormalizedTranscriptions": 5,
-    "meanWordConfidence": 75.5,
+    "meanConfidence": 75.5,
+    "confidenceSources": [
+      "page"
+    ],
     "slowestImages": [
       {
         "id": "roman-good-09",
-        "elapsedMs": 183
+        "elapsedMs": 196
       },
       {
         "id": "dev-laugh-01",
-        "elapsedMs": 161
+        "elapsedMs": 167
       },
       {
         "id": "dev-chai-04",
-        "elapsedMs": 128
+        "elapsedMs": 149
       }
     ]
   },
   "search": {
     "directOcrFieldsOnly": true,
     "measuredQueryRuns": 720,
-    "p50Ms": 32.532,
-    "p95Ms": 34.737,
-    "maxMs": 44.158,
-    "targetTop1": "23/36",
-    "targetRecallAt3": "30/36",
-    "meanReciprocalRank": 0.7361
+    "p50Ms": 0.561,
+    "p95Ms": 0.955,
+    "maxMs": 1.536,
+    "scaleWorkload": "Search timing only; for sizes above 12 the twelve OCR fixture records are repeated with distinct IDs, so no accuracy inference is made.",
+    "scale": [
+      {
+        "librarySize": 12,
+        "measuredQueryRuns": 180,
+        "p50Ms": 0.563,
+        "p95Ms": 1.012,
+        "maxMs": 1.806
+      },
+      {
+        "librarySize": 100,
+        "measuredQueryRuns": 180,
+        "p50Ms": 4.905,
+        "p95Ms": 6.275,
+        "maxMs": 12.12
+      },
+      {
+        "librarySize": 500,
+        "measuredQueryRuns": 180,
+        "p50Ms": 24.71,
+        "p95Ms": 31.725,
+        "maxMs": 49.367
+      },
+      {
+        "librarySize": 1000,
+        "measuredQueryRuns": 180,
+        "p50Ms": 48.3,
+        "p95Ms": 61.711,
+        "maxMs": 97.099
+      }
+    ],
+    "targetTop1": "25/36",
+    "targetRecallAt3": "33/36",
+    "meanReciprocalRank": 0.8056
   },
   "perImage": [
     {
@@ -62,8 +96,9 @@
       "recognized": "®\nहँसी रोक नहीं !",
       "concept": "laugh",
       "confidence": 80,
+      "confidenceSource": "page",
       "normalizedCer": 0.1538,
-      "ocrMs": 161
+      "ocrMs": 167
     },
     {
       "id": "dev-good-02",
@@ -71,8 +106,9 @@
       "recognized": "अच्छा जी! न",
       "concept": "good",
       "confidence": 80,
+      "confidenceSource": "page",
       "normalizedCer": 0.25,
-      "ocrMs": 78
+      "ocrMs": 80
     },
     {
       "id": "dev-question-03",
@@ -80,8 +116,9 @@
       "recognized": "",
       "concept": "question",
       "confidence": 0,
+      "confidenceSource": "page",
       "normalizedCer": 1,
-      "ocrMs": 34
+      "ocrMs": 35
     },
     {
       "id": "dev-chai-04",
@@ -89,8 +126,9 @@
       "recognized": "®\nचाय टाइम\n2",
       "concept": "chai",
       "confidence": 59,
+      "confidenceSource": "page",
       "normalizedCer": 0.5,
-      "ocrMs": 128
+      "ocrMs": 149
     },
     {
       "id": "dev-happy-05",
@@ -98,8 +136,9 @@
       "recognized": "बहुत खुश हूँ न",
       "concept": "happy",
       "confidence": 82,
+      "confidenceSource": "page",
       "normalizedCer": 0.1667,
-      "ocrMs": 80
+      "ocrMs": 84
     },
     {
       "id": "dev-angry-06",
@@ -107,8 +146,9 @@
       "recognized": "गुस्सा मत\nदिलाओ",
       "concept": "angry",
       "confidence": 93,
+      "confidenceSource": "page",
       "normalizedCer": 0,
-      "ocrMs": 82
+      "ocrMs": 87
     },
     {
       "id": "roman-happy-07",
@@ -116,8 +156,9 @@
       "recognized": "®\nAaj mood mast hai\nन",
       "concept": "happy",
       "confidence": 73,
+      "confidenceSource": "page",
       "normalizedCer": 0.2353,
-      "ocrMs": 104
+      "ocrMs": 108
     },
     {
       "id": "roman-question-08",
@@ -125,8 +166,9 @@
       "recognized": "Yaar, kya scene hai?",
       "concept": "question",
       "confidence": 95,
+      "confidenceSource": "page",
       "normalizedCer": 0,
-      "ocrMs": 64
+      "ocrMs": 70
     },
     {
       "id": "roman-good-09",
@@ -134,8 +176,9 @@
       "recognized": "Accha! Bilkul sahi.",
       "concept": "good",
       "confidence": 81,
+      "confidenceSource": "page",
       "normalizedCer": 0,
-      "ocrMs": 183
+      "ocrMs": 196
     },
     {
       "id": "roman-no-10",
@@ -143,8 +186,9 @@
       "recognized": "®\nNope, abhi nahi\na",
       "concept": "no",
       "confidence": 72,
+      "confidenceSource": "page",
       "normalizedCer": 0.2857,
-      "ocrMs": 92
+      "ocrMs": 108
     },
     {
       "id": "mixed-party-11",
@@ -152,8 +196,9 @@
       "recognized": "चलो, पार्टी\nकरें!",
       "concept": "celebration",
       "confidence": 95,
+      "confidenceSource": "page",
       "normalizedCer": 0,
-      "ocrMs": 76
+      "ocrMs": 79
     },
     {
       "id": "roman-laugh-12",
@@ -161,8 +206,9 @@
       "recognized": "Has has ke pagal!",
       "concept": "laugh",
       "confidence": 96,
+      "confidenceSource": "page",
       "normalizedCer": 0,
-      "ocrMs": 63
+      "ocrMs": 64
     }
   ],
   "retrieval": [
@@ -302,9 +348,9 @@
     {
       "query": "happy",
       "targetId": "roman-happy-07",
-      "rank": null,
+      "rank": 2,
       "top1": false,
-      "reciprocalRank": 0
+      "reciprocalRank": 0.5
     },
     {
       "query": "mood",
@@ -379,16 +425,16 @@
     {
       "query": "party",
       "targetId": "mixed-party-11",
-      "rank": null,
-      "top1": false,
-      "reciprocalRank": 0
+      "rank": 1,
+      "top1": true,
+      "reciprocalRank": 1
     },
     {
       "query": "celebrate",
       "targetId": "mixed-party-11",
-      "rank": null,
-      "top1": false,
-      "reciprocalRank": 0
+      "rank": 1,
+      "top1": true,
+      "reciprocalRank": 1
     },
     {
       "query": "पार्टी",

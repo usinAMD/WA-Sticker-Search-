@@ -1,0 +1,422 @@
+{
+  "dataset": "Stickly Hindi + Hinglish controlled OCR fixture set",
+  "synthetic": true,
+  "runLabel": "pre-optimization baseline",
+  "note": "Measured before query/index caching and the latest Hindi/Hinglish synonym expansions. Use as a historical baseline only; rerun the current benchmark script for current performance.",
+  "measuredAt": "2026-10-28T19:42:38.599Z",
+  "runtime": {
+    "node": "v22.23.4",
+    "platform": "linux",
+    "arch": "x64",
+    "tesseract": "tesseract.js 7.0.0",
+    "languages": "eng+hin",
+    "ocrWorkers": 1
+  },
+  "corpus": {
+    "imageCount": 12,
+    "queryCount": 36,
+    "searchCollectionSize": 12
+  },
+  "ocr": {
+    "workerAndLanguageInitMs": 543,
+    "languageModelsCachedAtStart": false,
+    "totalWarmRecognitionMs": 1144,
+    "perImageMs": {
+      "median": 80,
+      "p95": 183,
+      "min": 34,
+      "max": 183
+    },
+    "normalizedCharacterErrorRateMean": 0.216,
+    "exactNormalizedTranscriptions": 5,
+    "meanWordConfidence": 75.5,
+    "slowestImages": [
+      {
+        "id": "roman-good-09",
+        "elapsedMs": 183
+      },
+      {
+        "id": "dev-laugh-01",
+        "elapsedMs": 161
+      },
+      {
+        "id": "dev-chai-04",
+        "elapsedMs": 128
+      }
+    ]
+  },
+  "search": {
+    "directOcrFieldsOnly": true,
+    "measuredQueryRuns": 720,
+    "p50Ms": 32.532,
+    "p95Ms": 34.737,
+    "maxMs": 44.158,
+    "targetTop1": "23/36",
+    "targetRecallAt3": "30/36",
+    "meanReciprocalRank": 0.7361
+  },
+  "perImage": [
+    {
+      "id": "dev-laugh-01",
+      "expected": "हँसी रोक नहीं!",
+      "recognized": "®\nहँसी रोक नहीं !",
+      "concept": "laugh",
+      "confidence": 80,
+      "normalizedCer": 0.1538,
+      "ocrMs": 161
+    },
+    {
+      "id": "dev-good-02",
+      "expected": "अच्छा जी!",
+      "recognized": "अच्छा जी! न",
+      "concept": "good",
+      "confidence": 80,
+      "normalizedCer": 0.25,
+      "ocrMs": 78
+    },
+    {
+      "id": "dev-question-03",
+      "expected": "कहाँ हो?",
+      "recognized": "",
+      "concept": "question",
+      "confidence": 0,
+      "normalizedCer": 1,
+      "ocrMs": 34
+    },
+    {
+      "id": "dev-chai-04",
+      "expected": "चाय टाइम",
+      "recognized": "®\nचाय टाइम\n2",
+      "concept": "chai",
+      "confidence": 59,
+      "normalizedCer": 0.5,
+      "ocrMs": 128
+    },
+    {
+      "id": "dev-happy-05",
+      "expected": "बहुत खुश हूँ",
+      "recognized": "बहुत खुश हूँ न",
+      "concept": "happy",
+      "confidence": 82,
+      "normalizedCer": 0.1667,
+      "ocrMs": 80
+    },
+    {
+      "id": "dev-angry-06",
+      "expected": "गुस्सा मत दिलाओ",
+      "recognized": "गुस्सा मत\nदिलाओ",
+      "concept": "angry",
+      "confidence": 93,
+      "normalizedCer": 0,
+      "ocrMs": 82
+    },
+    {
+      "id": "roman-happy-07",
+      "expected": "Aaj mood mast hai",
+      "recognized": "®\nAaj mood mast hai\nन",
+      "concept": "happy",
+      "confidence": 73,
+      "normalizedCer": 0.2353,
+      "ocrMs": 104
+    },
+    {
+      "id": "roman-question-08",
+      "expected": "Yaar, kya scene hai?",
+      "recognized": "Yaar, kya scene hai?",
+      "concept": "question",
+      "confidence": 95,
+      "normalizedCer": 0,
+      "ocrMs": 64
+    },
+    {
+      "id": "roman-good-09",
+      "expected": "Accha! Bilkul sahi.",
+      "recognized": "Accha! Bilkul sahi.",
+      "concept": "good",
+      "confidence": 81,
+      "normalizedCer": 0,
+      "ocrMs": 183
+    },
+    {
+      "id": "roman-no-10",
+      "expected": "Nope, abhi nahi",
+      "recognized": "®\nNope, abhi nahi\na",
+      "concept": "no",
+      "confidence": 72,
+      "normalizedCer": 0.2857,
+      "ocrMs": 92
+    },
+    {
+      "id": "mixed-party-11",
+      "expected": "चलो, पार्टी करें!",
+      "recognized": "चलो, पार्टी\nकरें!",
+      "concept": "celebration",
+      "confidence": 95,
+      "normalizedCer": 0,
+      "ocrMs": 76
+    },
+    {
+      "id": "roman-laugh-12",
+      "expected": "Has has ke pagal!",
+      "recognized": "Has has ke pagal!",
+      "concept": "laugh",
+      "confidence": 96,
+      "normalizedCer": 0,
+      "ocrMs": 63
+    }
+  ],
+  "retrieval": [
+    {
+      "query": "hansi",
+      "targetId": "dev-laugh-01",
+      "rank": 1,
+      "top1": true,
+      "reciprocalRank": 1
+    },
+    {
+      "query": "हंसी",
+      "targetId": "dev-laugh-01",
+      "rank": 1,
+      "top1": true,
+      "reciprocalRank": 1
+    },
+    {
+      "query": "laugh",
+      "targetId": "dev-laugh-01",
+      "rank": 1,
+      "top1": true,
+      "reciprocalRank": 1
+    },
+    {
+      "query": "achha",
+      "targetId": "dev-good-02",
+      "rank": 1,
+      "top1": true,
+      "reciprocalRank": 1
+    },
+    {
+      "query": "accha",
+      "targetId": "dev-good-02",
+      "rank": 2,
+      "top1": false,
+      "reciprocalRank": 0.5
+    },
+    {
+      "query": "अच्छा",
+      "targetId": "dev-good-02",
+      "rank": 1,
+      "top1": true,
+      "reciprocalRank": 1
+    },
+    {
+      "query": "kahan",
+      "targetId": "dev-question-03",
+      "rank": null,
+      "top1": false,
+      "reciprocalRank": 0
+    },
+    {
+      "query": "कहाँ",
+      "targetId": "dev-question-03",
+      "rank": null,
+      "top1": false,
+      "reciprocalRank": 0
+    },
+    {
+      "query": "where",
+      "targetId": "dev-question-03",
+      "rank": null,
+      "top1": false,
+      "reciprocalRank": 0
+    },
+    {
+      "query": "chai",
+      "targetId": "dev-chai-04",
+      "rank": 1,
+      "top1": true,
+      "reciprocalRank": 1
+    },
+    {
+      "query": "tea",
+      "targetId": "dev-chai-04",
+      "rank": 1,
+      "top1": true,
+      "reciprocalRank": 1
+    },
+    {
+      "query": "चाय",
+      "targetId": "dev-chai-04",
+      "rank": 1,
+      "top1": true,
+      "reciprocalRank": 1
+    },
+    {
+      "query": "khush",
+      "targetId": "dev-happy-05",
+      "rank": 1,
+      "top1": true,
+      "reciprocalRank": 1
+    },
+    {
+      "query": "खुशी",
+      "targetId": "dev-happy-05",
+      "rank": 1,
+      "top1": true,
+      "reciprocalRank": 1
+    },
+    {
+      "query": "happy",
+      "targetId": "dev-happy-05",
+      "rank": 1,
+      "top1": true,
+      "reciprocalRank": 1
+    },
+    {
+      "query": "gussa",
+      "targetId": "dev-angry-06",
+      "rank": 1,
+      "top1": true,
+      "reciprocalRank": 1
+    },
+    {
+      "query": "गुस्सा",
+      "targetId": "dev-angry-06",
+      "rank": 1,
+      "top1": true,
+      "reciprocalRank": 1
+    },
+    {
+      "query": "angry",
+      "targetId": "dev-angry-06",
+      "rank": 1,
+      "top1": true,
+      "reciprocalRank": 1
+    },
+    {
+      "query": "mast",
+      "targetId": "roman-happy-07",
+      "rank": 1,
+      "top1": true,
+      "reciprocalRank": 1
+    },
+    {
+      "query": "happy",
+      "targetId": "roman-happy-07",
+      "rank": null,
+      "top1": false,
+      "reciprocalRank": 0
+    },
+    {
+      "query": "mood",
+      "targetId": "roman-happy-07",
+      "rank": 1,
+      "top1": true,
+      "reciprocalRank": 1
+    },
+    {
+      "query": "scene",
+      "targetId": "roman-question-08",
+      "rank": 1,
+      "top1": true,
+      "reciprocalRank": 1
+    },
+    {
+      "query": "yaar",
+      "targetId": "roman-question-08",
+      "rank": 1,
+      "top1": true,
+      "reciprocalRank": 1
+    },
+    {
+      "query": "kya",
+      "targetId": "roman-question-08",
+      "rank": 1,
+      "top1": true,
+      "reciprocalRank": 1
+    },
+    {
+      "query": "acha",
+      "targetId": "roman-good-09",
+      "rank": 2,
+      "top1": false,
+      "reciprocalRank": 0.5
+    },
+    {
+      "query": "achha",
+      "targetId": "roman-good-09",
+      "rank": 2,
+      "top1": false,
+      "reciprocalRank": 0.5
+    },
+    {
+      "query": "sahi",
+      "targetId": "roman-good-09",
+      "rank": 1,
+      "top1": true,
+      "reciprocalRank": 1
+    },
+    {
+      "query": "nahi",
+      "targetId": "roman-no-10",
+      "rank": 1,
+      "top1": true,
+      "reciprocalRank": 1
+    },
+    {
+      "query": "नहीं",
+      "targetId": "roman-no-10",
+      "rank": 2,
+      "top1": false,
+      "reciprocalRank": 0.5
+    },
+    {
+      "query": "nope",
+      "targetId": "roman-no-10",
+      "rank": 1,
+      "top1": true,
+      "reciprocalRank": 1
+    },
+    {
+      "query": "party",
+      "targetId": "mixed-party-11",
+      "rank": null,
+      "top1": false,
+      "reciprocalRank": 0
+    },
+    {
+      "query": "celebrate",
+      "targetId": "mixed-party-11",
+      "rank": null,
+      "top1": false,
+      "reciprocalRank": 0
+    },
+    {
+      "query": "पार्टी",
+      "targetId": "mixed-party-11",
+      "rank": 1,
+      "top1": true,
+      "reciprocalRank": 1
+    },
+    {
+      "query": "hasna",
+      "targetId": "roman-laugh-12",
+      "rank": 2,
+      "top1": false,
+      "reciprocalRank": 0.5
+    },
+    {
+      "query": "hasi",
+      "targetId": "roman-laugh-12",
+      "rank": 2,
+      "top1": false,
+      "reciprocalRank": 0.5
+    },
+    {
+      "query": "laugh",
+      "targetId": "roman-laugh-12",
+      "rank": 2,
+      "top1": false,
+      "reciprocalRank": 0.5
+    }
+  ]
+}

@@ -182,6 +182,7 @@ const ocrOrder = [...ocrRows].sort((a, b) => b.elapsedMs - a.elapsedMs);
 const summary = {
   dataset: manifest.dataset,
   synthetic: manifest.synthetic,
+  runLabel: "current search-optimized run",
   measuredAt: new Date().toISOString(),
   runtime: { node: process.version, platform: process.platform, arch: process.arch, tesseract: "tesseract.js 7.0.0", languages: "eng+hin", ocrWorkers: 1 },
   corpus: { imageCount: ocrRows.length, queryCount: retrievalRows.length, searchCollectionSize: records.length },
