@@ -1,0 +1,22 @@
+"id","expected","recognized","concept","confidence","normalized_cer","ocr_ms"
+"dev-laugh-01","हँसी रोक नहीं!","®
+हँसी रोक नहीं !","laugh","80.00","0.1538","161.0"
+"dev-good-02","अच्छा जी!","अच्छा जी! न","good","80.00","0.2500","78.0"
+"dev-question-03","कहाँ हो?","","question","0.00","1.0000","34.3"
+"dev-chai-04","चाय टाइम","®
+चाय टाइम
+2","chai","59.00","0.5000","127.5"
+"dev-happy-05","बहुत खुश हूँ","बहुत खुश हूँ न","happy","82.00","0.1667","79.8"
+"dev-angry-06","गुस्सा मत दिलाओ","गुस्सा मत
+दिलाओ","angry","93.00","0.0000","81.9"
+"roman-happy-07","Aaj mood mast hai","®
+Aaj mood mast hai
+न","happy","73.00","0.2353","103.8"
+"roman-question-08","Yaar, kya scene hai?","Yaar, kya scene hai?","question","95.00","0.0000","64.1"
+"roman-good-09","Accha! Bilkul sahi.","Accha! Bilkul sahi.","good","81.00","0.0000","182.9"
+"roman-no-10","Nope, abhi nahi","®
+Nope, abhi nahi
+a","no","72.00","0.2857","92.2"
+"mixed-party-11","चलो, पार्टी करें!","चलो, पार्टी
+करें!","celebration","95.00","0.0000","75.9"
+"roman-laugh-12","Has has ke pagal!","Has has ke pagal!","laugh","96.00","0.0000","62.5"

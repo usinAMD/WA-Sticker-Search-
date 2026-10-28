@@ -1,0 +1,189 @@
+{
+  "dataset": "Stickly Hindi + Hinglish controlled OCR fixture set",
+  "synthetic": true,
+  "count": 12,
+  "cases": [
+    {
+      "id": "dev-laugh-01",
+      "text": "हँसी रोक नहीं!",
+      "concept": "laugh",
+      "queries": [
+        "hansi",
+        "हंसी",
+        "laugh"
+      ],
+      "difficulty": "clear",
+      "lines": [
+        "हँसी रोक नहीं!"
+      ],
+      "file": "stickers/dev-laugh-01.png"
+    },
+    {
+      "id": "dev-good-02",
+      "text": "अच्छा जी!",
+      "concept": "good",
+      "queries": [
+        "achha",
+        "accha",
+        "अच्छा"
+      ],
+      "difficulty": "clear",
+      "lines": [
+        "अच्छा जी!"
+      ],
+      "file": "stickers/dev-good-02.png"
+    },
+    {
+      "id": "dev-question-03",
+      "text": "कहाँ हो?",
+      "concept": "question",
+      "queries": [
+        "kahan",
+        "कहाँ",
+        "where"
+      ],
+      "difficulty": "medium",
+      "lines": [
+        "कहाँ हो?"
+      ],
+      "file": "stickers/dev-question-03.png"
+    },
+    {
+      "id": "dev-chai-04",
+      "text": "चाय टाइम",
+      "concept": "chai",
+      "queries": [
+        "chai",
+        "tea",
+        "चाय"
+      ],
+      "difficulty": "clear",
+      "lines": [
+        "चाय टाइम"
+      ],
+      "file": "stickers/dev-chai-04.png"
+    },
+    {
+      "id": "dev-happy-05",
+      "text": "बहुत खुश हूँ",
+      "concept": "happy",
+      "queries": [
+        "khush",
+        "खुशी",
+        "happy"
+      ],
+      "difficulty": "medium",
+      "lines": [
+        "बहुत खुश हूँ"
+      ],
+      "file": "stickers/dev-happy-05.png"
+    },
+    {
+      "id": "dev-angry-06",
+      "text": "गुस्सा मत दिलाओ",
+      "concept": "angry",
+      "queries": [
+        "gussa",
+        "गुस्सा",
+        "angry"
+      ],
+      "difficulty": "medium",
+      "lines": [
+        "गुस्सा मत",
+        "दिलाओ"
+      ],
+      "file": "stickers/dev-angry-06.png"
+    },
+    {
+      "id": "roman-happy-07",
+      "text": "Aaj mood mast hai",
+      "concept": "happy",
+      "queries": [
+        "mast",
+        "happy",
+        "mood"
+      ],
+      "difficulty": "clear",
+      "lines": [
+        "Aaj mood mast hai"
+      ],
+      "file": "stickers/roman-happy-07.png"
+    },
+    {
+      "id": "roman-question-08",
+      "text": "Yaar, kya scene hai?",
+      "concept": "question",
+      "queries": [
+        "scene",
+        "yaar",
+        "kya"
+      ],
+      "difficulty": "medium",
+      "lines": [
+        "Yaar, kya scene hai?"
+      ],
+      "file": "stickers/roman-question-08.png"
+    },
+    {
+      "id": "roman-good-09",
+      "text": "Accha! Bilkul sahi.",
+      "concept": "good",
+      "queries": [
+        "acha",
+        "achha",
+        "sahi"
+      ],
+      "difficulty": "clear",
+      "lines": [
+        "Accha! Bilkul sahi."
+      ],
+      "file": "stickers/roman-good-09.png"
+    },
+    {
+      "id": "roman-no-10",
+      "text": "Nope, abhi nahi",
+      "concept": "no",
+      "queries": [
+        "nahi",
+        "नहीं",
+        "nope"
+      ],
+      "difficulty": "medium",
+      "lines": [
+        "Nope, abhi nahi"
+      ],
+      "file": "stickers/roman-no-10.png"
+    },
+    {
+      "id": "mixed-party-11",
+      "text": "चलो, पार्टी करें!",
+      "concept": "celebration",
+      "queries": [
+        "party",
+        "celebrate",
+        "पार्टी"
+      ],
+      "difficulty": "medium",
+      "lines": [
+        "चलो, पार्टी",
+        "करें!"
+      ],
+      "file": "stickers/mixed-party-11.png"
+    },
+    {
+      "id": "roman-laugh-12",
+      "text": "Has has ke pagal!",
+      "concept": "laugh",
+      "queries": [
+        "hasna",
+        "hasi",
+        "laugh"
+      ],
+      "difficulty": "clear",
+      "lines": [
+        "Has has ke pagal!"
+      ],
+      "file": "stickers/roman-laugh-12.png"
+    }
+  ]
+}
